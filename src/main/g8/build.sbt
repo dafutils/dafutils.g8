@@ -1,4 +1,3 @@
-val SCALATEST_VERSION = "3.0.3"
 val PROJECT_HOMEPAGE_URL = "https://github.com/dafutils/$name;format="norm"$"
 val BINTRAY_USER = System.getenv("BINTRAY_USER")
 val BINTRAY_PASSWORD = System.getenv("BINTRAY_PASS")
