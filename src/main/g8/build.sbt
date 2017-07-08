@@ -1,10 +1,5 @@
-
-val AKKA_VERSION = "2.5.2"
-val AKKA_HTTP_VERSION = "10.0.7"
 val SCALATEST_VERSION = "3.0.3"
-val SIGNPOST_VERSION = "1.2.1.2"
-val JSON4S_VERSION = "3.5.2"
-val PROJECT_HOMEPAGE_URL = "https://github.com/EmilDafinov/scala-ad-sdk"
+val PROJECT_HOMEPAGE_URL = "https://github.com/dafutils/$name;format="norm"$"
 val BINTRAY_USER = System.getenv("BINTRAY_USER")
 val BINTRAY_PASSWORD = System.getenv("BINTRAY_PASS")
 
@@ -40,7 +35,7 @@ lazy val publicationSettings = Seq(
       )
     }
     else
-      credentials.value
+      credentials.value //Similar
   },
   publishArtifact in Test := false,
   bintrayReleaseOnPublish := !isSnapshot.value
@@ -53,62 +48,43 @@ lazy val projectMetadataSettings = Seq(
   scmInfo := Some(
     ScmInfo(
       browseUrl = url(PROJECT_HOMEPAGE_URL),
-      connection = "scm:git:git@github.com:EmilDafinov/scala-ad-sdk.git"
+      connection = "scm:git:git@github.com:dafutils/$name;format="norm"$.git"
     )
   ),
   developers := List(
     Developer(
-      id = "edafinov",
-      name = "Emil Dafinov",
-      email = "emiliorodo@gmail.com",
-      url = url("https://github.com/EmilDafinov")
+      id = "$dev_id$",
+      name = "$dev_name$",
+      email = "$dev_email$",
+      url = url("https://github.com/dafutils")
     )
   )
 )
 
-lazy val $name$ = (project in file("."))
+lazy val $name;format="camel"$ = (project in file("."))
   .configs(IntegrationTest)
   .settings(Defaults.itSettings)
   .settings(projectMetadataSettings)
   .settings(versionSettings)
   .settings(publicationSettings)
   .settings(
-    scalaVersion := "$scala_version$",
+    scalaVersion := "2.12.2",
 
     organization := "$package$",
-    name := "scala-ad-sdk",
 
-    coverageExcludedFiles := ".*Module.*;",
+    name := "$name$",
+    
     libraryDependencies ++= Seq(
       //Application config
-      "com.typesafe" % "config" % "1.3.1",
+      "com.typesafe" % "config" % "$typesafe_config_version$",
 
       //Logging
-      "ch.qos.logback" % "logback-classic" % "1.2.3",
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
-
-      //Authentication
-      "oauth.signpost" % "signpost-core" % SIGNPOST_VERSION,
-      "oauth.signpost" % "signpost-commonshttp4" % SIGNPOST_VERSION,
-
-      //Http
-      "com.typesafe.akka" %% "akka-actor" % AKKA_VERSION,
-      "com.typesafe.akka" %% "akka-http-core" % AKKA_HTTP_VERSION,
-      "com.typesafe.akka" %% "akka-stream" % AKKA_VERSION, // Added to allow using the latest version of Akka with Akka Http 10.0.7
-      "com.typesafe.akka" %% "akka-http" % AKKA_HTTP_VERSION,
-      "com.typesafe.akka" %% "akka-http-testkit" % AKKA_HTTP_VERSION,
-      "com.typesafe.akka" %% "akka-http-xml" % AKKA_HTTP_VERSION,
-      "io.github.lhotari" %% "akka-http-health" % "1.0.8",
-
-      //Json
-      "org.json4s" %% "json4s-jackson" % JSON4S_VERSION,
-      "org.json4s" %% "json4s-ext" % JSON4S_VERSION,
-      "de.heikoseeberger" %% "akka-http-json4s" % "1.16.1",
+      "ch.qos.logback" % "logback-classic" % "$logback_verison$",
+      "com.typesafe.scala-logging" %% "scala-logging" % "$scala_logging_version$",
 
       //Test
-      "org.scalactic" %% "scalactic" % SCALATEST_VERSION,
-      "org.scalatest" %% "scalatest" % SCALATEST_VERSION % "it,test",
-      "org.mockito" % "mockito-all" % "1.10.19" % "it,test",
-      "com.github.tomakehurst" % "wiremock" % "2.6.0" % "it,test"
+      "org.scalactic" %% "scalactic" % "$scalatest_version$",
+      "org.scalatest" %% "scalatest" % "$scalatest_version$" % "it,test",
+      "org.mockito" % "mockito-all" % "$mockito_version$" % "it,test"
     )
   )
