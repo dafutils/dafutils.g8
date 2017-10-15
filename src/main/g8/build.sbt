@@ -67,7 +67,7 @@ lazy val $name;format="camel"$ = (project in file("."))
   .settings(versionSettings)
   .settings(publicationSettings)
   .settings(
-    scalaVersion := "2.12.2",
+    scalaVersion := "$scala_version$",
 
     organization := "$package$",
 
