@@ -84,6 +84,6 @@ lazy val $name;format="camel"$ = (project in file("."))
       //Test
       "org.scalactic" %% "scalactic" % "$scalatest_version$",
       "org.scalatest" %% "scalatest" % "$scalatest_version$" % "it,test",
-      "org.mockito" % "mockito-all" % "$mockito_version$" % "it,test"
+      "org.mockito" % "mockito-core" % "$mockito_version$" % "it,test"
     )
   )
