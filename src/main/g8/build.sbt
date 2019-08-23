@@ -10,7 +10,6 @@ lazy val $name;format="camel"$ = (project in file("."))
   .configs(IntegrationTest)
   .settings(Defaults.itSettings)
   .settings(versionSettings)
-  .settings(publicationSettings)
   .settings(
     scalaVersion := "$scala_version$",
 
